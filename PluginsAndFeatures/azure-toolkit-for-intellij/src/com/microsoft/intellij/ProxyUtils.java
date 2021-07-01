@@ -13,6 +13,7 @@ import com.microsoft.azure.toolkit.lib.common.proxy.ProxyManager;
 import com.microsoft.azure.toolkit.lib.common.utils.TextUtils;
 
 import java.net.InetSocketAddress;
+import java.net.ProxySelector;
 import java.util.Objects;
 
 public class ProxyUtils {
@@ -22,7 +23,9 @@ public class ProxyUtils {
         proxyManager.init();
         String source = "system";
         if (instance != null && instance.USE_HTTP_PROXY) {
+            final ProxySelector save = ProxySelector.getDefault();
             proxyManager.configure(instance.PROXY_HOST, instance.PROXY_PORT);
+            ProxySelector.setDefault(save);
             source = "intellij";
         }
         if (source != null && Objects.nonNull(proxyManager.getProxy())) {
