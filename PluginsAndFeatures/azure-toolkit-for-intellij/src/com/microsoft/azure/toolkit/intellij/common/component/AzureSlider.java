@@ -3,7 +3,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-package com.microsoft.azure.toolkit.intellij.springcloud.properties;
+package com.microsoft.azure.toolkit.intellij.common.component;
 
 import com.intellij.ui.JBIntSpinner;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.util.Hashtable;
 
-public class AzureSlider {
+public class AzureSlider extends JPanel {
     @Getter
     private JPanel contentPanel;
 
@@ -23,6 +23,7 @@ public class AzureSlider {
     private int realMin = Integer.MIN_VALUE;
 
     public AzureSlider() {
+        super();
         this.init();
     }
 
